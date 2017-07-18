@@ -21,8 +21,18 @@ void start();
 void nach();
 void info();
 void zap();
+void shop();
 //=======================================//
 
+/*shop()
+{
+	cout << " Это магазин в котором ты сможешь купить плюшки к своей игре.\n" << endl;
+	cout << " Каждый товар стоит свою цену и с баланса будет списоваться стоимость товара.\n" << endl;
+	cout << " \n" << endl;
+	cout << "[4]\n" << endl;
+	cout << "[5]Выход из игры\n" << endl;
+	cout << "(Введи числа от 1-4, выберая пункт меню)" << endl;
+}*/
 void info()
 {
 	cout << "Приветствую тебя, это игра <*CASINO*>\n" << endl;
@@ -194,8 +204,8 @@ int main()
 	//начало
 	cout << "[1] Запустить игру\n" << endl;
 	cout << "[2] INFO[F.A.Q]\n" << endl;
-	cout << "[3]\n" << endl;
-	cout << "[4]\n" << endl;
+	cout << "[3] Магазин(в разработке)\n" << endl;
+	cout << "[4] Разедел в разработке\n" << endl;
 	cout << "[5]Выход из игры\n" << endl;
 	cout << "(Введи числа от 1-4, выберая пункт меню)" << endl;
 	cin >> menu;
@@ -220,6 +230,11 @@ int main()
 		break;
 		
 		case 3:
+			/*cout << "Идёт загрузка .... " << endl;
+			Sleep(400);
+			system("cls");
+			Sleep(600);
+			shop();*/
 		break;
 		
 		case 4:
@@ -231,6 +246,8 @@ int main()
 		break;
 		
 		default:
+			cout << "Ошибка!" << endl;
+			exit(0);
 		break;
 	}
 	//не ниже этой строки
