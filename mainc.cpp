@@ -204,7 +204,7 @@ int main()
 	switch(menu)
 	{
 		case 1:
-			cout << "»дЄт загрузка ... " << endl;
+			cout << "»дЄт загрузка .... " << endl;
 			Sleep(400);
 			system("cls");
 			Sleep(600);
@@ -212,7 +212,7 @@ int main()
 		break;
 		
 		case 2:
-			cout << "»дЄт загрузка ... " << endl;
+			cout << "»дЄт загрузка .... " << endl;
 			Sleep(400);
 			system("cls");
 			Sleep(600);
