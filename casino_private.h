@@ -5,19 +5,19 @@
 #define CASINO_PRIVATE_H
 
 /* VERSION DEFINITIONS */
-#define VER_STRING	"1.2.10.53"
+#define VER_STRING	"1.2.10.104"
 #define VER_MAJOR	1
 #define VER_MINOR	2
 #define VER_RELEASE	10
-#define VER_BUILD	53
+#define VER_BUILD	104
 #define COMPANY_NAME	"Sniff.inc"
-#define FILE_VERSION	"1.2.10.53"
+#define FILE_VERSION	"1.2.10.104"
 #define FILE_DESCRIPTION	"Игра casino почувствуй себя богатым или бомжом XD"
 #define INTERNAL_NAME	""
 #define LEGAL_COPYRIGHT	""
 #define LEGAL_TRADEMARKS	""
 #define ORIGINAL_FILENAME	""
 #define PRODUCT_NAME	""
-#define PRODUCT_VERSION	"1.2.10.53"
+#define PRODUCT_VERSION	"1.2.10.104"
 
 #endif /*CASINO_PRIVATE_H*/
