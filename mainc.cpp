@@ -16,7 +16,7 @@ int yes;
 int menu;
 int ver;
 int yesshop;
-int balance = 8000;
+int balance = 5000;
 //==========[Функции]====================//
 int main();
 void start();
@@ -37,8 +37,9 @@ void shop()
 	{
 		system("cls");
 		Sleep (1000);
-		cout << "[Товар 1]Вероятность победы 10% (Стоимость 7000coins) " << endl;
-		cout << "[Товар 2]Вероятность победы 50%" << endl;
+		cout << "[Товар 1]Вероятность победы 10% (Стоимость 7000 coins) " << endl;
+		cout << "[Товар 2]Вероятность победы 50% (Стоимость 150000 coins)" << endl;
+		cout << "[Товар 3]Вероятность победы 100% (Стоимость 1000000 coins)" << endl;
 		cout << "Введи номер товара который хочешь купить..." << endl;
 		cin >> ver;
 		switch(ver)
@@ -61,18 +62,38 @@ void shop()
 				}
 			break;
 			case 2:
-				balance = balance - 7000;
-				if(balance < 20000)
+				if(balance < 150000)
 				{
 					cout << "Ошибка у тебя нету столько денег" << endl;
 				}
-				cout << "Ты купил вероятность победы 10%" << endl;
-				ver = 1;
-				cout << "Магазин открывается через 3 секунды " << endl;
-				Sleep(3000);
-				system("cls");
-				Sleep(500);
-				main();
+				else
+				{
+					balance = balance - 150000;
+					cout << "Ты купил вероятность победы 50%" << endl;
+					ver = 2;
+					cout << "Магазин открывается через 3 секунды " << endl;
+					Sleep(3000);
+					system("cls");
+					Sleep(500);
+					main();
+				}
+			break;
+			case 3:
+				if(balance < 1000000)
+				{
+					cout << "Ошибка у тебя нету столько денег" << endl;
+				}
+				else
+				{
+					balance = balance - 1000000;
+					cout << "Ты купил вероятность победы 100%" << endl;
+					ver = 3;
+					cout << "Магазин открывается через 3 секунды " << endl;
+					Sleep(3000);
+					system("cls");
+					Sleep(500);
+					main();
+				}
 			break;
 
 		}
@@ -90,31 +111,54 @@ void shop()
 }
 void info()
 {
+	int ivih;
 	cout << "Приветствую тебя, это игра <*CASINO*>\n" << endl;
-	cout << "Суть этой игры заключается в том чтобы не опустить баланс до 0 и поднять как можно больше денег!\n" << endl;
-	cout << "Твой стртовый баланс будет 5000 coins\n" << endl;
-	cout << "Удачи тебе в нашей игре и выйграй большой куш!\n.\n.\n." << endl;
+	cout << "Суть игры думаю вам понятна.(заработать как можно больше,не проиграть до нуля)\n" << endl;
+	cout << "Когда вы запускаете игру в первое поле ввода пишите ставку цифрами\n" << endl;
+	cout << "Существует магазин в котором вы можете купить вероятность победы  и т.д\n" << endl;
+	cout << "Если вы обнаружили баг или ошибку сообщите сюда! vk.com/timmy_gabani\n" << endl;
+	cout << "С уважением SNIFF.inc\n" << endl;
+	cout << "Есть вероятность что вы играете на старой версии игры проверяйте обновления тут => vk.com/timmy_gabani\n" << endl;
+	cout << "Введите 1 чтобы выйти в меню" << endl;
+	Beep(540,500);
+	Sleep(1000);
+	Beep(460,500);
+	cin >> ivih;
+	if(ivih == 1)
+	{
+		system("cls");
+		Sleep(50);
+		cout << "Идёт загрузка .... " << endl;
+		Sleep(400);
+		system("cls");
+		Sleep(600);
+		main();
+	}
+	else
+	{
+		cout << "Игра сломалась!..." << endl;	
+	}
 }
 
 void zap()
 {
-		cout << "Игра запускается...." << endl;
-		Sleep(1000);
-		cout << "\n\nЗагрузка 25%\n." << endl;
-		Sleep(500);
-		cout << "\nЗагрузка 50%\n." << endl;
-		Sleep(500);
-		cout << "\nЗагрузка 75%\n." << endl;
-		Sleep(500);
-		cout << "\nЗагрузка 100%\n." << endl;
-		Sleep(500);
-		cout << " Игра запущенна!"<< endl;
-		Sleep(500);
-		cout << "\n================" << endl;
-		Sleep(600);
-		system("cls");
-		start();
-		
+	
+	cout << "Игра запускается...." << endl;
+	Sleep(1000);
+	cout << "\n\nЗагрузка 25%\n." << endl;
+	Sleep(500);
+	cout << "\nЗагрузка 50%\n." << endl;
+	Sleep(500);
+	cout << "\nЗагрузка 75%\n." << endl;
+	Sleep(500);
+	cout << "\nЗагрузка 100%\n." << endl;
+	Sleep(500);
+	cout << " Игра запущенна!"<< endl;
+	Sleep(500);
+	cout << "\n================" << endl;
+	Sleep(600);
+	system("cls");
+	start();
 }
 
 
@@ -131,6 +175,7 @@ void nach()
 		switch(win)
 		{
 			case 1:
+				Beep(540,650);
 				cout << "Поздравляю ты выиграл !!!\n." << endl;
 				stavka = stavka*mnz;
 				balance = stavka + balance;
@@ -144,6 +189,7 @@ void nach()
 				start();
 			break;
 			case 2:
+				Beep(460,650);
 				cout << "Ты проиграл сожалею тебе" << endl;
 				cout << "Баланс : " << balance << endl; 
 				cout << "Следующий раунд....." << endl;
@@ -155,6 +201,7 @@ void nach()
 				start();
 			break;	
 			case 3:
+				Beep(540,650);
 				cout << "Поздравляю ты выиграл !!!\n." << endl;
 				stavka = stavka*mnz;
 				balance = stavka + balance;
@@ -168,6 +215,7 @@ void nach()
 				start();
 			break;
 			case 4:
+				Beep(460,650);
 				cout << "Ты проиграл сожалею тебе" << endl;
 				cout << "Баланс : " << balance << endl; 
 				cout << "Следующий раунд....." << endl;
@@ -179,6 +227,7 @@ void nach()
 				start();
 			break;	
 			case 5:
+				Beep(540,650);
 				cout << "Поздравляю ты выиграл !!!\n." << endl;
 				stavka = stavka*mnz;
 				balance = stavka + balance;
@@ -192,6 +241,7 @@ void nach()
 				start();
 			break;	
 			default :
+				Beep(460,650);
 				cout << "Ты проиграл сожалею тебе" << endl;
 				cout << "Баланс : " << balance << endl; 
 				cout << "Следующий раунд....." << endl;
@@ -208,6 +258,7 @@ void nach()
 		switch(win)
 		{
 			case 1:
+				Beep(540,650);
 				cout << "Поздравляю ты выиграл !!!\n." << endl;
 				stavka = stavka*mnz;
 				balance = stavka + balance;
@@ -221,6 +272,7 @@ void nach()
 				start();
 			break;
 			case 2:
+				Beep(460,650);
 				cout << "Ты проиграл сожалею тебе" << endl;
 				cout << "Баланс : " << balance << endl; 
 				cout << "Следующий раунд....." << endl;
@@ -232,6 +284,7 @@ void nach()
 				start();
 			break;	
 			case 3:
+				Beep(540,650);
 				cout << "Поздравляю ты выиграл !!!\n." << endl;
 				stavka = stavka*mnz;
 				balance = stavka + balance;
@@ -245,6 +298,7 @@ void nach()
 				start();
 			break;
 			case 4:
+				Beep(460,650);
 				cout << "Ты проиграл сожалею тебе" << endl;
 				cout << "Баланс : " << balance << endl; 
 				cout << "Следующий раунд....." << endl;
@@ -256,6 +310,7 @@ void nach()
 				start();
 			break;	
 			case 5:
+				Beep(540,650);
 				cout << "Поздравляю ты выиграл !!!\n." << endl;
 				stavka = stavka*mnz;
 				balance = stavka + balance;
@@ -269,6 +324,184 @@ void nach()
 				start();
 			break;	
 			default :
+				Beep(540,650);
+				cout << "Поздравляю ты выиграл !!!\n." << endl;
+				stavka = stavka*mnz;
+				balance = stavka + balance;
+				cout << "Баланс : " << balance << endl;
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+		}
+	}
+	if(ver == 2)
+	{
+		switch(win)
+		{
+			case 1:
+				Beep(540,650);
+				cout << "Поздравляю ты выиграл !!!\n." << endl;
+				stavka = stavka*mnz;
+				balance = stavka + balance;
+				cout << "Баланс : " << balance << endl;
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+			break;
+			case 2:
+				Beep(540,650);
+				cout << "Поздравляю ты выиграл !!!\n." << endl;
+				stavka = stavka*mnz;
+				balance = stavka + balance;
+				cout << "Баланс : " << balance << endl;
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+			break;	
+			case 3:
+				Beep(460,650);
+				cout << "Ты проиграл сожалею тебе" << endl;
+				cout << "Баланс : " << balance << endl; 
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+			break;
+			case 4:
+				Beep(540,650);
+				cout << "Поздравляю ты выиграл !!!\n." << endl;
+				stavka = stavka*mnz;
+				balance = stavka + balance;
+				cout << "Баланс : " << balance << endl;
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+			break;	
+			case 5:
+				Beep(540,650);
+				cout << "Поздравляю ты выиграл !!!\n." << endl;
+				stavka = stavka*mnz;
+				balance = stavka + balance;
+				cout << "Баланс : " << balance << endl;
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+			break;	
+			default :
+				Beep(540,650);
+				cout << "Поздравляю ты выиграл !!!\n." << endl;
+				stavka = stavka*mnz;
+				balance = stavka + balance;
+				cout << "Баланс : " << balance << endl;
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+		}
+	}
+	
+	if(ver == 3)
+	{
+		switch(win)
+		{
+			case 1:
+				Beep(540,650);
+				cout << "Поздравляю ты выиграл !!!\n." << endl;
+				stavka = stavka*mnz;
+				balance = stavka + balance;
+				cout << "Баланс : " << balance << endl;
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+			break;
+			case 2:
+				Beep(540,650);
+				cout << "Поздравляю ты выиграл !!!\n." << endl;
+				stavka = stavka*mnz;
+				balance = stavka + balance;
+				cout << "Баланс : " << balance << endl;
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+			break;	
+			case 3:
+				Beep(540,650);
+				cout << "Поздравляю ты выиграл !!!\n." << endl;
+				stavka = stavka*mnz;
+				balance = stavka + balance;
+				cout << "Баланс : " << balance << endl;
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+			break;
+			case 4:
+				Beep(540,650);
+				cout << "Поздравляю ты выиграл !!!\n." << endl;
+				stavka = stavka*mnz;
+				balance = stavka + balance;
+				cout << "Баланс : " << balance << endl;
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+			break;	
+			case 5:
+				Beep(540,650);
+				cout << "Поздравляю ты выиграл !!!\n." << endl;
+				stavka = stavka*mnz;
+				balance = stavka + balance;
+				cout << "Баланс : " << balance << endl;
+				cout << "Следующий раунд....." << endl;
+				Sleep(3500);
+				cout << "\nЗагрузка(50%)\n." << endl;
+				Sleep(500);
+				cout << "\nЗагрузка(100%)\n." << endl;
+				Sleep(500);
+				start();
+			break;	
+			default :
+				Beep(540,650);
 				cout << "Поздравляю ты выиграл !!!\n." << endl;
 				stavka = stavka*mnz;
 				balance = stavka + balance;
@@ -351,7 +584,8 @@ void start()
 	cout << "\nЗагрузка 75%\n." << endl;
 	Sleep(500);
 	cout << "\nЗагрузка 100%\n." << endl;
-	Sleep(500);
+	Sleep(600);
+	nach();
 	nach();
 }
 
