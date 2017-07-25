@@ -6,6 +6,7 @@
 #include <cstdlib>
 #include <dos.h>
 #include <ctime>
+#include <fstream>
 //==========[для кода удобства]==========//
 using namespace std;
 //==========[Переменные]=================//
@@ -24,7 +25,14 @@ void nach();
 void info();
 void zap();
 void shop();
+void save();
 //=======================================//
+
+/*void save()
+{
+	ofstream akk("memory512.bin");
+	akk << balance;
+}*/
 
 void shop()
 {
@@ -120,9 +128,6 @@ void info()
 	cout << "С уважением SNIFF.inc\n" << endl;
 	cout << "Есть вероятность что вы играете на старой версии игры проверяйте обновления тут => vk.com/timmy_gabani\n" << endl;
 	cout << "Введите 1 чтобы выйти в меню" << endl;
-	Beep(540,500);
-	Sleep(1000);
-	Beep(460,500);
 	cin >> ivih;
 	if(ivih == 1)
 	{
@@ -595,16 +600,27 @@ int main()
 	system("color fc");
 	setlocale(0,"Russian");
 	//начало
+	Beep(1000,100);
 	cout << " Приветствуем тебя ...\n" << endl;
 	cout << " Твой баланс : " << balance << endl;
 	cout << "\n\n[1] Запустить игру\n" << endl;
-	cout << "[2] INFO[F.A.Q]\n" << endl;
-	cout << "[3] Магазин(в разработке)\n" << endl;
-	cout << "[4] Раздел в разработке\n" << endl;
+	cout << "[2] INFO [F.A.Q]\n" << endl;
+	cout << "[3] Магазин\n" << endl;
+	cout << "[4] Сохранить баланс(обязательно перед выходо из игры!)\n" << endl;
 	cout << "[5] Выход из игры\n" << endl;
-	cout << "(Введи числа от 1-4, выберая пункт меню)" << endl;
+	cout << "(Введи числа от 1-5, выберая пункт меню)" << endl;
 	cin >> menu;
 
+	if(menu == 1972)
+	{
+		system("cls");
+		balance = balance + 5000;
+		cout << "Вы ввели чит-код с бонусом 5000 coins вы выйдите в меню через 3 сек." << endl;
+		Sleep(3000);
+		system("cls");
+		Sleep(500);
+		main();
+	}
 
 	switch(menu)
 	{
