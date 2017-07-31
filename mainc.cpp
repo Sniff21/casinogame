@@ -17,7 +17,7 @@ int yes;
 int menu;
 int ver;
 int yesshop;
-int balance = 5000;
+int balance;
 //==========[Функции]====================//
 int main();
 void start();
@@ -26,14 +26,29 @@ void info();
 void zap();
 void shop();
 void save();
+void saves();
 //=======================================//
-
-/*void save()
+void save()
 {
-	ofstream akk("memory512.bin");
-	akk << balance;
-}*/
+	cout << "Ваш аккаунт сохранён успешно!" << endl;
+	ofstream save;
+	save.open("memory512.bin");
+	save << balance;
+	save.close();
+	system("cls");
+	cout << "Через 3 секунды вас перенесёт в меню" << endl;
+	Sleep(3000);
+	system("cls");
+	main();
+}
 
+void saves()
+{
+	ofstream saves;
+	saves.open("memory512.bin");
+	saves << balance;
+	saves.close();
+}
 void shop()
 {
 	cout << " Это магазин в котором ты сможешь купить плюшки к своей игре.\n" << endl;
@@ -63,6 +78,10 @@ void shop()
 					cout << "Ты купил вероятность победы 10%" << endl;
 					ver = 1;
 					cout << "Магазин открывается через 3 секунды " << endl;
+					ofstream savedsd;
+					savedsd.open("memory512.bin",ios_base::out);
+					savedsd << balance << endl;
+					savedsd.close();
 					Sleep(3000);
 					system("cls");
 					Sleep(500);
@@ -80,6 +99,10 @@ void shop()
 					cout << "Ты купил вероятность победы 50%" << endl;
 					ver = 2;
 					cout << "Магазин открывается через 3 секунды " << endl;
+					ofstream savedsd;
+					savedsd.open("memory512.bin",ios_base::out);
+					savedsd << balance << endl;
+					savedsd.close();
 					Sleep(3000);
 					system("cls");
 					Sleep(500);
@@ -97,6 +120,10 @@ void shop()
 					cout << "Ты купил вероятность победы 100%" << endl;
 					ver = 3;
 					cout << "Магазин открывается через 3 секунды " << endl;
+					ofstream savedsd;
+					savedsd.open("memory512.bin",ios_base::out);
+					savedsd << balance << endl;
+					savedsd.close();
 					Sleep(3000);
 					system("cls");
 					Sleep(500);
@@ -105,6 +132,7 @@ void shop()
 			break;
 
 		}
+		saves();
 	
 	
 	}
@@ -121,12 +149,20 @@ void info()
 {
 	int ivih;
 	cout << "Приветствую тебя, это игра <*CASINO*>\n" << endl;
+	cout << "  . .             .               .  .         .            .            .            ..." << endl;
+	cout << " .   .           . .             .    .        .            ..           .          .     ." << endl;
+	cout << ".               .   .            .             .            .  .         .          .     ."<< endl;
+	cout << ".              .     .             .           .            .    .       .          .     ." << endl;
+	cout << ".              .......               .         .            .      .     .          .     ." << endl;
+	cout << ".             .       .               .        .            .        .   .          .     ." << endl;
+	cout << " .    .      .         .        .       .      .            .          . .          .     ." << endl;
+	cout << "  . .       .           .        . . .         .            .            .            ... \n" << endl;
 	cout << "Суть игры думаю вам понятна.(заработать как можно больше,не проиграть до нуля)\n" << endl;
 	cout << "Когда вы запускаете игру в первое поле ввода пишите ставку цифрами\n" << endl;
 	cout << "Существует магазин в котором вы можете купить вероятность победы  и т.д\n" << endl;
 	cout << "Если вы обнаружили баг или ошибку сообщите сюда! vk.com/timmy_gabani\n" << endl;
 	cout << "С уважением SNIFF.inc\n" << endl;
-	cout << "Есть вероятность что вы играете на старой версии игры проверяйте обновления тут => vk.com/timmy_gabani\n" << endl;
+	cout << "Есть вероятность что вы играете на старой версии игры проверяйте обновления тут => vk.com/casinogamecpp\n" << endl;
 	cout << "Введите 1 чтобы выйти в меню" << endl;
 	cin >> ivih;
 	if(ivih == 1)
@@ -257,7 +293,8 @@ void nach()
 				Sleep(500);
 				start();
 		}
-	}
+	}	
+		saves();
 	if(ver == 1)
 	{
 		switch(win)
@@ -342,6 +379,7 @@ void nach()
 				Sleep(500);
 				start();
 		}
+		saves();
 	}
 	if(ver == 2)
 	{
@@ -429,6 +467,7 @@ void nach()
 				Sleep(500);
 				start();
 		}
+		saves();
 	}
 	
 	if(ver == 3)
@@ -519,6 +558,7 @@ void nach()
 				Sleep(500);
 				start();
 		}
+		saves();
 	}
 }
 
@@ -526,6 +566,7 @@ void nach()
 
 void start()
 {
+	saves();
 	if(balance == 0)
 	{
 		cout << "Увы, но ты проиграл твой баланс 0! В следующий раз тебе повезёт! (Запусти заного игру)" << endl;
@@ -565,6 +606,8 @@ void start()
 		cout << "Срабатывает выход в меню..." << endl;
 		cout << "" << endl;
 		cout << "Идёт загрузка .... " << endl;
+		ofstream saveds;
+		saves();
 		Sleep(400);
 		system("cls");
 		Sleep(600);
@@ -592,6 +635,7 @@ void start()
 	Sleep(600);
 	nach();
 	nach();
+	saves();
 }
 
 
@@ -600,22 +644,28 @@ int main()
 	system("color fc");
 	setlocale(0,"Russian");
 	//начало
-	Beep(1000,100);
-	cout << " Приветствуем тебя ...\n" << endl;
-	cout << " Твой баланс : " << balance << endl;
+	ifstream nad;
+	nad.open("memory512.bin",ios_base::in);
+	nad >> balance;
+	nad.close();
+	Beep(1020,50);
+	cout << " Приветствуем тебя игрок.\n" << endl;
+	cout << "Твой баланс : " << balance << endl;
 	cout << "\n\n[1] Запустить игру\n" << endl;
 	cout << "[2] INFO [F.A.Q]\n" << endl;
 	cout << "[3] Магазин\n" << endl;
-	cout << "[4] Сохранить баланс(обязательно перед выходо из игры!)\n" << endl;
+	cout << "[4] Сохранение аккаунта(обязательно при выходи из игры зайдите сюда!)\n" << endl;
 	cout << "[5] Выход из игры\n" << endl;
 	cout << "(Введи числа от 1-5, выберая пункт меню)" << endl;
 	cin >> menu;
 
-	if(menu == 1972)
+	if(menu == 1212121212)
 	{
 		system("cls");
 		balance = balance + 5000;
 		cout << "Вы ввели чит-код с бонусом 5000 coins вы выйдите в меню через 3 сек." << endl;
+		ofstream savedsd;
+		saves();
 		Sleep(3000);
 		system("cls");
 		Sleep(500);
@@ -649,6 +699,20 @@ int main()
 		break;
 		
 		case 4:
+			cout << "Идёт загрузка .... " << endl;
+			Sleep(400);
+			system("cls");
+			Sleep(600);
+			system("cls");
+			cout << "Идёт сохранение аккаунта....." << endl;
+			Sleep(1000);
+			cout << "Ваш аккаунт успешно сохранён!" << endl;
+			Sleep(1000);
+			save();
+			Sleep(1000);
+			system("cls");
+			main();
+			
 		break;
 		
 		case 5:
@@ -661,6 +725,7 @@ int main()
 			exit(0);
 		break;
 	}
+
 	//не ниже этой строки
 	_getch();
 	return true;

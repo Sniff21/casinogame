@@ -1,12 +1,12 @@
 [Project]
 FileName=casino.dev
-Name=casino
+Name=Casino Game
 Type=1
 Ver=2
 ObjFiles=
 Includes=
 Libs=
-PrivateResource=
+PrivateResource=casino_private.rc
 ResourceIncludes=
 MakeIncludes=
 Compiler=
@@ -19,33 +19,44 @@ ObjectOutput=
 LogOutput=
 LogOutputEnabled=0
 OverrideOutput=0
-OverrideOutputName=
+OverrideOutputName=casino.exe
 HostApplication=
 UseCustomMakefile=0
 CustomMakefile=
 CommandLine=
 Folders=
-IncludeVersionInfo=0
+IncludeVersionInfo=1
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
+UnitCount=1
 
 [VersionInfo]
-Major=1
+Major=5
 Minor=0
 Release=0
-Build=0
-LanguageID=1033
+Build=15
+LanguageID=1049
 CharsetID=1252
-CompanyName=
-FileVersion=
-FileDescription=Developed using the Dev-C++ IDE
-InternalName=
+CompanyName=Sniff.inc
+FileVersion=5.0.0.15
+FileDescription=Casino Game стань магнатом!
+InternalName=Sniff.inc
 LegalCopyright=
 LegalTrademarks=
-OriginalFilename=
-ProductName=
-ProductVersion=
-AutoIncBuildNr=0
+OriginalFilename=Casino Game
+ProductName=Casino Game
+ProductVersion=5.0.0.15
+AutoIncBuildNr=1
 SyncProduct=1
+
+[Unit1]
+FileName=mainc.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
 
