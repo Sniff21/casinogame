@@ -25,30 +25,139 @@ void nach();
 void info();
 void zap();
 void shop();
-void save();
-void saves();
+void save1();
+void save2();
+void chek_bal();
+void fsave();
+void nuser();
+void inus();
+void smag();
+void fsmag();
+void inmag();
 //=======================================//
-void save()
+void inmag()
 {
-	cout << "Ваш аккаунт сохранён успешно!" << endl;
-	ofstream save;
-	save.open("memory512.bin");
-	save << balance;
+	int bver;
+	ifstream mag;
+	mag.open("0x000402.bin");
+	mag >> ver;
+	mag.close();
+	if(ver == 0)
+	{
+		bver = 0;
+	}
+	else if(ver == 1)
+	{
+		bver = 10;
+	}
+	else if(ver == 2)
+	{
+		bver = 50;
+	}
+	else if(ver == 3)
+	{
+		bver = 100;
+	}
+	
+	cout << " Купленая вероятность на победу " << bver << "%" << endl;
+}
+
+void fsmag()
+{
+	ofstream fsave;
+	fsave.open("0x000402.bin",ios_base::out);
+	fsave << ver;
+	fsave.close(); 
+}
+
+void smag()
+{
+	ofstream save("0x000402.bin");
+	save << ver;
 	save.close();
+	
+}
+
+void inus()
+{
+	char namess[40];
+	ifstream name;
+	name.open("0x000404.bin",ios_base::in);
+	name.getline(namess,40);
+	name.close();
+	cout << " Приветствуем тебя : " << namess << "!" << endl;
+	
+}
+
+void nuser()
+{
+	char names[40];
+	cout << "Введи своё имя как к тебе обращаться (на латинице и без пробелов!!!)" << endl;
+	cin >> names;
+	cout << " Приветсвую тебя " << names << " Подожди немного имя записываеться в файл" << endl;
+	ofstream name;
+	name.open("0x000404.bin");
+	name << names << endl;
+	name.close();
+	Sleep(1000);
 	system("cls");
-	cout << "Через 3 секунды вас перенесёт в меню" << endl;
+	Sleep(500);
+	cout << "Сейчас тебя перенаправит в меню через 3 секунды." << endl;
+	Sleep(3000);
+	system("cls");
+	main();
+	
+}
+
+void fsave()
+{
+	ofstream save;
+	save.open("0x000412.bin",ios_base::out);
+	save << balance << endl;
+	save.close();
+}
+void chek_bal()
+{
+	ifstream bal;
+	bal.open("0x000412.bin",ios_base::in);
+	bal >> balance;
+	bal.close();
+}
+
+void save1()
+{
+	cout << "Идёт сохранение аккаунта ...." << endl;
+	Sleep(500);
+	ofstream save;
+	save.open("0x000412.bin",ios_base::out);
+	save << balance << endl;
+	save.close();
+	cout << "Аккаунт сохранён. Вы будете перенаправеленны в меню через 3 сек." << endl;
 	Sleep(3000);
 	system("cls");
 	main();
 }
 
-void saves()
+void save2()
 {
-	ofstream saves;
-	saves.open("memory512.bin");
-	saves << balance;
-	saves.close();
+	cout << "Создаётся новый аккаунт...\n" << endl;
+	cout << "25%\n" << endl;
+	Sleep(100);
+	cout << "50%\n" << endl;
+	Sleep(100);
+	cout << "75%\n" << endl;
+	Sleep(100);
+	cout << "100%\n" << endl;
+	Sleep(100);
+	ofstream save("0x000412.bin");
+	save << 5000 << endl;
+	save.close();
+	cout << "Аккаунт заного создан! Вы будете перенаправлены в меню через 3 сек." << endl;
+	Sleep(3000);
+	system("cls");
+	main();
 }
+
 void shop()
 {
 	cout << " Это магазин в котором ты сможешь купить плюшки к своей игре.\n" << endl;
@@ -78,10 +187,8 @@ void shop()
 					cout << "Ты купил вероятность победы 10%" << endl;
 					ver = 1;
 					cout << "Магазин открывается через 3 секунды " << endl;
-					ofstream savedsd;
-					savedsd.open("memory512.bin",ios_base::out);
-					savedsd << balance << endl;
-					savedsd.close();
+					fsave();
+					fsmag();
 					Sleep(3000);
 					system("cls");
 					Sleep(500);
@@ -99,10 +206,8 @@ void shop()
 					cout << "Ты купил вероятность победы 50%" << endl;
 					ver = 2;
 					cout << "Магазин открывается через 3 секунды " << endl;
-					ofstream savedsd;
-					savedsd.open("memory512.bin",ios_base::out);
-					savedsd << balance << endl;
-					savedsd.close();
+					fsave();
+					fsmag();
 					Sleep(3000);
 					system("cls");
 					Sleep(500);
@@ -120,10 +225,8 @@ void shop()
 					cout << "Ты купил вероятность победы 100%" << endl;
 					ver = 3;
 					cout << "Магазин открывается через 3 секунды " << endl;
-					ofstream savedsd;
-					savedsd.open("memory512.bin",ios_base::out);
-					savedsd << balance << endl;
-					savedsd.close();
+					fsave();
+					fsmag();
 					Sleep(3000);
 					system("cls");
 					Sleep(500);
@@ -132,7 +235,6 @@ void shop()
 			break;
 
 		}
-		saves();
 	
 	
 	}
@@ -149,14 +251,6 @@ void info()
 {
 	int ivih;
 	cout << "Приветствую тебя, это игра <*CASINO*>\n" << endl;
-	cout << "  . .             .               .  .         .            .            .            ..." << endl;
-	cout << " .   .           . .             .    .        .            ..           .          .     ." << endl;
-	cout << ".               .   .            .             .            .  .         .          .     ."<< endl;
-	cout << ".              .     .             .           .            .    .       .          .     ." << endl;
-	cout << ".              .......               .         .            .      .     .          .     ." << endl;
-	cout << ".             .       .               .        .            .        .   .          .     ." << endl;
-	cout << " .    .      .         .        .       .      .            .          . .          .     ." << endl;
-	cout << "  . .       .           .        . . .         .            .            .            ... \n" << endl;
 	cout << "Суть игры думаю вам понятна.(заработать как можно больше,не проиграть до нуля)\n" << endl;
 	cout << "Когда вы запускаете игру в первое поле ввода пишите ставку цифрами\n" << endl;
 	cout << "Существует магазин в котором вы можете купить вероятность победы  и т.д\n" << endl;
@@ -222,6 +316,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -234,6 +329,7 @@ void nach()
 				cout << "Ты проиграл сожалею тебе" << endl;
 				cout << "Баланс : " << balance << endl; 
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -248,6 +344,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -260,6 +357,7 @@ void nach()
 				cout << "Ты проиграл сожалею тебе" << endl;
 				cout << "Баланс : " << balance << endl; 
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -274,6 +372,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -286,6 +385,7 @@ void nach()
 				cout << "Ты проиграл сожалею тебе" << endl;
 				cout << "Баланс : " << balance << endl; 
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -293,8 +393,7 @@ void nach()
 				Sleep(500);
 				start();
 		}
-	}	
-		saves();
+	}
 	if(ver == 1)
 	{
 		switch(win)
@@ -306,6 +405,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -318,6 +418,7 @@ void nach()
 				cout << "Ты проиграл сожалею тебе" << endl;
 				cout << "Баланс : " << balance << endl; 
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -332,6 +433,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -344,6 +446,7 @@ void nach()
 				cout << "Ты проиграл сожалею тебе" << endl;
 				cout << "Баланс : " << balance << endl; 
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -358,6 +461,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -372,6 +476,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -379,7 +484,6 @@ void nach()
 				Sleep(500);
 				start();
 		}
-		saves();
 	}
 	if(ver == 2)
 	{
@@ -392,6 +496,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -406,6 +511,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -418,6 +524,7 @@ void nach()
 				cout << "Ты проиграл сожалею тебе" << endl;
 				cout << "Баланс : " << balance << endl; 
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -432,6 +539,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -446,6 +554,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -460,6 +569,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -467,7 +577,6 @@ void nach()
 				Sleep(500);
 				start();
 		}
-		saves();
 	}
 	
 	if(ver == 3)
@@ -481,6 +590,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -495,6 +605,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -509,6 +620,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -523,6 +635,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -537,6 +650,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -551,6 +665,7 @@ void nach()
 				balance = stavka + balance;
 				cout << "Баланс : " << balance << endl;
 				cout << "Следующий раунд....." << endl;
+				fsave();
 				Sleep(3500);
 				cout << "\nЗагрузка(50%)\n." << endl;
 				Sleep(500);
@@ -558,7 +673,6 @@ void nach()
 				Sleep(500);
 				start();
 		}
-		saves();
 	}
 }
 
@@ -566,7 +680,6 @@ void nach()
 
 void start()
 {
-	saves();
 	if(balance == 0)
 	{
 		cout << "Увы, но ты проиграл твой баланс 0! В следующий раз тебе повезёт! (Запусти заного игру)" << endl;
@@ -606,8 +719,6 @@ void start()
 		cout << "Срабатывает выход в меню..." << endl;
 		cout << "" << endl;
 		cout << "Идёт загрузка .... " << endl;
-		ofstream saveds;
-		saves();
 		Sleep(400);
 		system("cls");
 		Sleep(600);
@@ -625,6 +736,7 @@ void start()
 	cout << "Ставка ровна : " << stavka << endl;
 	balance = balance-stavka;
 	cout << "Оствшийся баланс равен : " << balance << endl;
+	fsave();
 	cout << "\n\nЗагрузка 25%\n." << endl;
 	Sleep(500);
 	cout << "\nЗагрузка 50%\n." << endl;
@@ -635,7 +747,6 @@ void start()
 	Sleep(600);
 	nach();
 	nach();
-	saves();
 }
 
 
@@ -644,19 +755,20 @@ int main()
 	system("color fc");
 	setlocale(0,"Russian");
 	//начало
-	ifstream nad;
-	nad.open("memory512.bin",ios_base::in);
-	nad >> balance;
-	nad.close();
-	Beep(1020,50);
-	cout << " Приветствуем тебя игрок.\n" << endl;
-	cout << "Твой баланс : " << balance << endl;
+	Beep(920,500);
+	smag();
+	chek_bal();
+	inus();
+	cout << " Твой баланс : " << balance << endl;
+	inmag();
 	cout << "\n\n[1] Запустить игру\n" << endl;
 	cout << "[2] INFO [F.A.Q]\n" << endl;
 	cout << "[3] Магазин\n" << endl;
-	cout << "[4] Сохранение аккаунта(обязательно при выходи из игры зайдите сюда!)\n" << endl;
-	cout << "[5] Выход из игры\n" << endl;
-	cout << "(Введи числа от 1-5, выберая пункт меню)" << endl;
+	cout << "[4] Получение баланса(начать новую игру)\n" << endl;
+	cout << "[5] Сохранение баланса(сохранить игру)\n" << endl;
+	cout << "[6] Ввести имя\n" << endl;
+	cout << "[7] Выход из игры\n" << endl;
+	cout << "(Введи числа от 1-7, выберая пункт меню)" << endl;
 	cin >> menu;
 
 	if(menu == 1212121212)
@@ -664,8 +776,7 @@ int main()
 		system("cls");
 		balance = balance + 5000;
 		cout << "Вы ввели чит-код с бонусом 5000 coins вы выйдите в меню через 3 сек." << endl;
-		ofstream savedsd;
-		saves();
+		fsave();
 		Sleep(3000);
 		system("cls");
 		Sleep(500);
@@ -675,6 +786,7 @@ int main()
 	switch(menu)
 	{
 		case 1:
+			system("cls");
 			cout << "Идёт загрузка .... " << endl;
 			Sleep(400);
 			system("cls");
@@ -683,6 +795,7 @@ int main()
 		break;
 		
 		case 2:
+			system("cls");
 			cout << "Идёт загрузка .... " << endl;
 			Sleep(400);
 			system("cls");
@@ -691,6 +804,7 @@ int main()
 		break;
 		
 		case 3:
+			system("cls");
 			cout << "Идёт загрузка .... " << endl;
 			Sleep(400);
 			system("cls");
@@ -699,23 +813,31 @@ int main()
 		break;
 		
 		case 4:
+			system("cls");
 			cout << "Идёт загрузка .... " << endl;
 			Sleep(400);
 			system("cls");
 			Sleep(600);
-			system("cls");
-			cout << "Идёт сохранение аккаунта....." << endl;
-			Sleep(1000);
-			cout << "Ваш аккаунт успешно сохранён!" << endl;
-			Sleep(1000);
-			save();
-			Sleep(1000);
-			system("cls");
-			main();
-			
+			save2();
 		break;
 		
 		case 5:
+			system("cls");
+			cout << "Идёт загрузка .... " << endl;
+			Sleep(400);
+			system("cls");
+			Sleep(600);
+			save1();
+		break;
+		case 6:
+			system("cls");
+			cout << "Идёт загрузка .... " << endl;
+			Sleep(400);
+			system("cls");
+			Sleep(600);
+			nuser();
+		break;
+		case 7:
 			system("cls");
 			exit(0);
 		break;
@@ -725,7 +847,6 @@ int main()
 			exit(0);
 		break;
 	}
-
 	//не ниже этой строки
 	_getch();
 	return true;
