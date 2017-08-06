@@ -10,8 +10,8 @@ A ICON "casino.ico"
 // TO CHANGE VERSION INFORMATION, EDIT PROJECT OPTIONS...
 //
 1 VERSIONINFO
-FILEVERSION 5,1,0,32
-PRODUCTVERSION 5,1,0,32
+FILEVERSION 5,0,0,17
+PRODUCTVERSION 5,0,0,17
 FILETYPE VFT_APP
 {
   BLOCK "StringFileInfo"
@@ -19,14 +19,14 @@ FILETYPE VFT_APP
     BLOCK "041904E4"
     {
       VALUE "CompanyName", "Sniff.inc"
-      VALUE "FileVersion", "5.1.0.32"
+      VALUE "FileVersion", "5.0.0.17"
       VALUE "FileDescription", "Casino Game стань магнатом!"
       VALUE "InternalName", "Sniff.inc"
       VALUE "LegalCopyright", ""
       VALUE "LegalTrademarks", ""
       VALUE "OriginalFilename", "Casino Game"
       VALUE "ProductName", "Casino Game"
-      VALUE "ProductVersion", "5.1.0.32"
+      VALUE "ProductVersion", "5.0.0.17"
     }
   }
   BLOCK "VarFileInfo"
