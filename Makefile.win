@@ -1,5 +1,5 @@
 # Project: Casino Game
-# Makefile created by Dev-C++ 5.4.2
+# Makefile created by Dev-C++ 5.11
 
 CPP      = g++.exe
 CC       = gcc.exe
@@ -7,18 +7,17 @@ WINDRES  = windres.exe
 RES      = casino_private.res
 OBJ      = mainc.o $(RES)
 LINKOBJ  = mainc.o $(RES)
-LIBS     = -L"V:/Devolopemt/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
-INCS     = -I"V:/Devolopemt/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
-CXXINCS  = -I"V:/Devolopemt/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include"
+LIBS     = -L"V:/Dev-Cpp/MinGW64/lib" -L"V:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"V:/Dev-Cpp/MinGW64/include" -I"V:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"V:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"V:/Dev-Cpp/MinGW64/include" -I"V:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"V:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"V:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = casino.exe
 CXXFLAGS = $(CXXINCS) 
 CFLAGS   = $(INCS) 
-RM       = rm -f
+RM       = rm.exe -f
 
 .PHONY: all all-before all-after clean clean-custom
 
 all: all-before $(BIN) all-after
-
 
 clean: clean-custom
 	${RM} $(OBJ) $(BIN)
@@ -31,3 +30,4 @@ mainc.o: mainc.cpp
 
 casino_private.res: casino_private.rc 
 	$(WINDRES) -i casino_private.rc --input-format=rc -o casino_private.res -O coff 
+
