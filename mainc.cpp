@@ -901,8 +901,8 @@ void start() {
 }
 
 
-int main() {
-	system("color fc");
+int main() 
+{
 	setlocale(0,"Russian");
 	//начало
 	Beep(920,500);
