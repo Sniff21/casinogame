@@ -1,18 +1,18 @@
 # Project: Casino Game
 # Makefile created by Dev-C++ 5.11
 
-CPP      = g++.exe
-CC       = gcc.exe
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
 RES      = casino_private.res
 OBJ      = mainc.o $(RES)
 LINKOBJ  = mainc.o $(RES)
-LIBS     = -L"V:/Dev-Cpp/MinGW64/lib" -L"V:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
-INCS     = -I"V:/Dev-Cpp/MinGW64/include" -I"V:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"V:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
-CXXINCS  = -I"V:/Dev-Cpp/MinGW64/include" -I"V:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"V:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"V:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+LIBS     = -L"V:/Devolopemt/Dev-Cpp/MinGW64/lib" -L"V:/Devolopemt/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"V:/Devolopemt/Dev-Cpp/MinGW64/include" -I"V:/Devolopemt/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"V:/Devolopemt/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"V:/Devolopemt/Dev-Cpp/MinGW64/include" -I"V:/Devolopemt/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"V:/Devolopemt/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"V:/Devolopemt/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
 BIN      = casino.exe
-CXXFLAGS = $(CXXINCS) 
-CFLAGS   = $(INCS) 
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
 RM       = rm.exe -f
 
 .PHONY: all all-before all-after clean clean-custom

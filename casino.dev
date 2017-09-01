@@ -27,26 +27,26 @@ CommandLine=
 Folders=
 IncludeVersionInfo=1
 SupportXPThemes=0
-CompilerSet=0
-CompilerSettings=0000000000000000000000000
+CompilerSet=1
+CompilerSettings=0000000000000000001000000
 UnitCount=1
 
 [VersionInfo]
 Major=5
 Minor=0
 Release=0
-Build=29
+Build=57
 LanguageID=1049
 CharsetID=1252
 CompanyName=Sniff.inc
-FileVersion=5.0.0.29
+FileVersion=5.0.0.57
 FileDescription=Casino Game стань магнатом!
 InternalName=Sniff.inc
 LegalCopyright=
 LegalTrademarks=
 OriginalFilename=Casino Game
 ProductName=Casino Game
-ProductVersion=5.0.0.29
+ProductVersion=5.0.0.57
 AutoIncBuildNr=1
 SyncProduct=1
 

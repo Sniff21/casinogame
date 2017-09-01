@@ -28,6 +28,7 @@ int menu;
 int ver;
 int yesshop;
 int balance;
+bool cheat = false;
 //==========[Функции]====================//
 int main();
 void start();
@@ -44,7 +45,195 @@ void inus();
 void smag();
 void fsmag();
 void inmag();
+void cheats();
+void scheat();
+void fscheat();
+void incheat();
+void set();
 //=======================================//
+void set()
+{
+	int vib;
+	cout << "\t\t\t\t[Настройка]" << endl;
+	cout << "Вы можете поменять свой цвет шрифта или цвет фона" << endl;
+	cout << "\n[0]Стандарт" << endl;
+	cout << "\n[1]Чёрный фон - Серый шрифт" << endl;
+	cout << "\n[2]Красный фон - Белый шрифт" << endl;
+	cout << "\n[3]Серый фон - Голубой шрифт" << endl;
+	cout << "\n[4]Зелёный фон - Белый шрифт" << endl;
+	cout << "\n[5]Чёрный фон - Лиловый шрифт" << endl;
+	cin >> vib;
+	switch(vib)
+	{
+		case 0:
+			system("color fc");
+			cout << "Вы будете переведены в меню через 3 секунды" << endl;
+			Sleep(3000);
+			system ("cls");
+			main();
+ 		break;
+		case 1:
+			system("color 08");
+			cout << "Вы будете переведены в меню через 3 секунды" << endl;
+			Sleep(3000);
+			system ("cls");
+			main();
+ 		break;
+ 		
+ 		case 2:
+			system("color 4f");
+			cout << "Вы будете переведены в меню через 3 секунды" << endl;
+			Sleep(3000);
+			system ("cls");
+			main();
+ 		break;
+ 		
+ 		case 3:
+			system("color 8b");
+			cout << "Вы будете переведены в меню через 3 секунды" << endl;
+			Sleep(3000);
+			system ("cls");
+			main();
+ 		break;
+ 		
+ 		case 4:
+			system("color 2f");
+			cout << "Вы будете переведены в меню через 3 секунды" << endl;
+			Sleep(3000);
+			system ("cls");
+			main();
+ 		break;
+ 		
+ 		case 5:
+			system("color 05");
+			cout << "Вы будете переведены в меню через 3 секунды" << endl;
+			Sleep(3000);
+			system ("cls");
+			main();
+ 		break;
+	}
+}
+
+void incheat()
+{
+	ifstream save;
+	save.open("0x000400.bin",ios_base::out);
+	save >> cheat;
+	save.close();
+}
+
+void fscheat()
+{
+	ofstream save;
+	save.open("0x000400.bin",ios_base::in);
+	save << 1;
+	save.close();
+}
+
+void scheat()
+{
+	ofstream save;
+	save.open("0x000400.bin");
+	save << cheat;
+	save.close();
+}
+
+void cheats()
+{
+	string a;
+	cout << "Введи сюда подарочный код : ";
+	cin >>a;
+	if(a == "ppp")
+	{
+		balance = balance + 10000000;
+		cout << "Ты разработчик!" << endl;
+		Sleep(1000);
+		fsave();
+		system("cls");
+		cout << "Идёт загрузка .... " << endl;
+		Sleep(400);
+		system("cls");
+		Sleep(600);
+		main();
+	} 
+	else if(a == "eazy")
+	{
+		incheat();
+		if (cheat == true)
+		{
+			cout << "Ошибка ты уже получил подарок!" << endl;
+			Sleep(2000);
+			system("cls");
+			main();
+		}
+		else
+		{
+			balance = balance + 1200;
+			cout << "Вы получили подарок в размере 1200 coins!" << endl;
+			Sleep(1000);
+			fscheat();
+			fsave();
+			Sleep(2000);
+			cheat = true;
+			system("cls");
+			main();
+		}
+	}
+	else if(a == "medium")
+	{
+		incheat();
+		if (cheat == true)
+		{
+			cout << "Ошибка ты уже получил подарок!" << endl;
+			Sleep(2000);
+			system("cls");
+			main();
+		}
+		else
+		{
+			balance = balance + 5000;
+			cout << "Вы получили подарок в размере 5000 coins!" << endl;
+			Sleep(1000);
+			fscheat();
+			fsave();
+			Sleep(2000);
+			cheat = true;
+			system("cls");
+			main();
+		}
+	}
+	else if(a == "mmmoney")
+	{
+		incheat();
+		if (cheat == true)
+		{
+			cout << "Ошибка ты уже получил подарок!" << endl;
+			Sleep(2000);
+			system("cls");
+			main();
+		}
+		else
+		{
+			balance = balance + 10000;
+			cout << "Вы получили подарок в размере 10000 coins!" << endl;
+			Sleep(1000);
+			fscheat();
+			fsave();
+			Sleep(2000);
+			cheat = true;
+			system("cls");
+			main();
+		}
+	}
+	else
+	{
+		
+		cout << "Подарочный код не найден!" << endl;
+		Sleep(500);
+		cheats();
+	}
+}
+
 void inmag() {
 	int bver;
 	ifstream mag;
@@ -61,7 +250,7 @@ void inmag() {
 		bver = 100;
 	}
 
-	cout << " Купленая вероятность на победу " << bver << "%" << endl;
+	cout << " Купленная вероятность на победу " << bver << "%" << endl;
 }
 
 void fsmag() {
@@ -728,7 +917,9 @@ int main() {
 	cout << "[4] Получение баланса(начать новую игру)\n" << endl;
 	cout << "[5] Сохранение баланса(сохранить игру)\n" << endl;
 	cout << "[6] Ввести имя\n" << endl;
-	cout << "[7] Выход из игры\n" << endl;
+	cout << "[7] Прочие\n" << endl;
+	cout << "[8] Настройки\n" << endl;
+	cout << "[9] Выход из игры\n" << endl;
 	cout << "(Введи числа от 1-7, выберая пункт меню)" << endl;
 	cin >> menu;
 
@@ -798,12 +989,28 @@ int main() {
 			break;
 		case 7:
 			system("cls");
+			cout << "Идёт загрузка .... " << endl;
+			Sleep(400);
+			system("cls");
+			Sleep(600);
+			cheats();
+			break;
+		case 8:
+			system("cls");
+			cout << "Идёт загрузка .... " << endl;
+			Sleep(400);
+			system("cls");
+			Sleep(600);
+			set();
+			break;
+		case 9:
+			system("cls");
 			exit(0);
 			break;
 
 		default:
 			cout << "Ошибка!" << endl;
-			exit(0);
+			main();
 			break;
 	}
 	//не ниже этой строки
